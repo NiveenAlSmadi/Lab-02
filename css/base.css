@@ -1,0 +1,28 @@
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+* {
+    font-family: Roboto;
+  }
+body {
+    
+    background-color: rgb(242, 253, 253);
+}
+
+h1 {
+    font-size: x-large;
+    font-weight: bolder;
+    margin-top: 33px;
+}
+
+header {
+    text-align: center;
+    background-color: rgb(38, 128, 134);
+    height: 90px;
+    border: black solid 2px;
+}
+
+footer {
+    font-size: larger;
+    font-weight: bolder;
+}

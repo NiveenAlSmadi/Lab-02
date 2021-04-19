@@ -1,0 +1,32 @@
+img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    
+}
+div img {
+    float: left;
+    border: 2px solid 
+
+
+}
+
+h2{
+    
+        clear: both;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    
+}
+p {
+    float: center;
+    clear: both;
+    padding-left:0px;
+    padding-top: 20px;
+}
+footer {
+    margin-top: 100px;
+    clear: both;
+    text-align: center;
+}
