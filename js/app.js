@@ -24,7 +24,7 @@
 
 // };
 'use strict';
-$.ajax('../data/page-1.json').then(jdata=>{
+$.ajax('./data/page-1.json').then(jdata=>{
 // console.log(jdata);
   jdata.forEach((iteam) => {
     //console.log(iteam);
