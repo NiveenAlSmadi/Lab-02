@@ -39,8 +39,10 @@ function x(value){
   this.detals = value.description;
   this.keyword=value.keyword;
   this.horn=value.horn;
+  // newarry.push(this.keyword);
 }
- x.prototype.render = function(){
+
+x.prototype.render = function(){
   $('#gh').append(
     `<h2> ${this.name}</h2>`
   );
@@ -70,7 +72,8 @@ $('#select').on('change',function(event){
       let newdata= new x(val);
       let render1= newdata.render();
       $('#span').append(render1);
-      newarry.pop(render1);
+      newarry.push(render1);
     }
   });
 });
+

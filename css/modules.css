@@ -1,16 +1,22 @@
-img {
+
+/* img {
     float: left;
     width: 100px;
-    height: 100px;
-    
-}
-div img {
-    float: left;
+    height: 150px;
     border: 2px solid 
+} */
 
+div{
+    display:flex;
 
 }
 
+img{
+    float: left;
+    border-radius: 10%;
+    border: solid 5px rgb(2, 2, 2);
+ 
+}
 h2{
     
         clear: both;
