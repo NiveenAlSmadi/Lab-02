@@ -22,6 +22,10 @@ header {
     border: black solid 2px;
 }
 
+main{
+    margin: 30px ;
+}
+
 footer {
     font-size: larger;
     font-weight: bolder;
