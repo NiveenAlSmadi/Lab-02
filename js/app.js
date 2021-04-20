@@ -58,3 +58,7 @@ $( '.keyword' ).change( ( e ) => {
 } );
 
 
+// mostach //
+let Template=$('#photo-Mustache').html();
+let renderTemplate=Mustache.render(Template,this);
+$('main').append(renderTemplate);
