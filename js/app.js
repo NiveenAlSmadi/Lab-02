@@ -1,60 +1,65 @@
 
 'use strict';
-let newarry=[];
-let optionarr=[];
-
-// construct function
-function X(value){
-  this.name = value.title;
-  this.src = value.image_url;
-  this.detals = value.description;
-  this.keyword=value.keyword;
-  this.horn=value.horn;
-  newarry.push(this);
+function Animals(animal) {
+  this.image_url = animal.image_url;
+  this.title = animal.title;
+  this.description = animal.description;
+  this.keyword = animal.keyword;
+  this.horns = animal.horns;
 }
+let pageNumber = './data/page-1.jsonn';
 
-// git data from json
-$.ajax('./data/page-1.json').then((data) => {
-  data.forEach((animals) => {
-    let title = new X(animals);
-    // console.log(title);
-    title.render();
-  });
-});
+Animals.prototype.render = function (){
+  let template = $('.photo-Mustache').html();
+  let animalTemplate = Mustache.render(template,this);
+  $('main').append(animalTemplate);
+};
 
-//render  //
-X.prototype.render = function() {
-  let animal = $('#photo-template').clone();
-  animal.find('h2').text(this.name);
-  animal.find('img').attr('src',`${this.src}`);
-  animal.addClass( this.keyword );
-  animal.find('p').text(this.detals);
-  $('main').append(animal);
-
-  this.optionRender();
-
+const ajaxsettings ={
+  method:'get',
+  datatype:'json'
 };
 
 
-// render options  //
-X.prototype.optionRender=function() {
-  let option = `<option>${this.keyword}</option>`;
-  if(!optionarr.includes(this.keyword)){
-    newarry.push(this.keyword);
-    $('.keyword').append(option);
-  }
-};
-
-
+let newDataArray = [];
+let dataRender = function(pageUrl){
+  console.log(pageUrl.substr(0,pageUrl.lengtha));
+  $.ajax(`${pageUrl.substr(0,pageUrl.length -1)}`,ajaxsettings).then(data =>{
+    newDataArray = [];
+    data.forEach((element) => {
+      let animalImage = new Animals(element);
+      if (!newDataArray.includes(animalImage.keyword)){
+        newDataArray.push(animalImage.keyword);
+        $('#filter').append(`<option value="${animalImage.keyword}">${animalImage.keyword}</option>`);
+      }
+      animalImage.render();
+    });
+  });};
 
 //filter//
-$( '.keyword' ).change( ( e ) => {
+
+
+$('#filter').on('change', function() {
   $( 'div' ).hide();
-  let targetValue = e.target.value;
+  let targetValue = $(this).val();
+  console.log(targetValue);
   $( `.${targetValue}` ).show();
   if( targetValue === 'default' ){
-    $( 'div' ).show();
+    $('div').show();
   }
 } );
 
 
+// sortByhorn()
+$('.page1').on('click',()=> { pageNumber = './data/page-1.jsonn' ;
+  $('main').empty();
+  $('#filter').empty();
+  dataRender(pageNumber);
+});
+$('.page2').on('click',()=>{ pageNumber = './data/page-2.jsonn';
+  $('main').empty();
+  $('#filter').empty();
+  dataRender(pageNumber);
+});
+
+dataRender(pageNumber);

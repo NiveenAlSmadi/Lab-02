@@ -13,7 +13,8 @@ font-weight: bolder;
 }
 
 footer {
-    margin-top: 100px;
+  
+    line-height: 3;
     clear: both;
     text-align: center;
 }
